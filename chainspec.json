@@ -1,0 +1,16 @@
+{
+  "name": "QuantumHarmony",
+  "id": "quantumharmony_mainnet",
+  "chainType": "Live",
+  "bootNodes": [
+    "/ip4/51.79.26.123/tcp/30333/p2p/12D3KooWQYV9dGMFoRz4jXcm5ey9iLCiYiJmQSLEqFp9VXNQ2jkp",
+    "/ip4/51.79.26.168/tcp/30333/p2p/12D3KooWHdiAxVd8uMQR1hGWXz7Fhg5SGcyRUnVQvZ7FnWv9J9Z4",
+    "/ip4/209.38.225.4/tcp/30333/p2p/QmU2nT5Mg3m8Mn5mHa3GeJ5erUWeVookcbNJWc46AeRd4k"
+  ],
+  "properties": {
+    "tokenSymbol": "QH",
+    "tokenDecimals": 12,
+    "ss58Format": 42
+  },
+  "genesis": { "raw": { "top": {} } }
+}
