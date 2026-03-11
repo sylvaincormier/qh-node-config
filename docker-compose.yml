@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  node:
+    image: sylvaincormier/quantumharmony-node:v28.2
+    container_name: qh-node
+    restart: unless-stopped
+    ports:
+      - "9944:9944"
+      - "30333:30333"
+    volumes:
+      - node-data:/data
+      - ./chainspec.json:/config/chainspec.json:ro
+    environment:
+      - NODE_NAME=validator-prod
+      - RPC_METHODS=Unsafe
+    command:
+      - "--chain=/config/chainspec.json"
+      - "--validator"
+      - "--base-path=/data"
+      - "--rpc-external"
+      - "--rpc-cors=all"
+
+  dashboard:
+    image: nginx:alpine
+    container_name: qh-dashboard
+    ports:
+      - "8080:80"
+    volumes:
+      - ./dashboard:/usr/share/nginx/html:ro
+    depends_on:
+      - node
+
+  treasury-api:
+    image: sylvaincormier/qh-treasury:latest
+    container_name: qh-treasury
+    ports:
+      - "8200:8200"
+    env_file:
+      - .env
+    depends_on:
+      - node
+
+volumes:
+  node-data:
